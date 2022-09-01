@@ -22,6 +22,7 @@ export const Dashboard: React.FC = () => {
   });
   const [newRepo, setNewRepo] = React.useState('');
   const [inputError, setInputError] = React.useState('');
+  const formElement = React.useRef<HTMLFormElement | null>(null);
 
   React.useEffect(() => {
     localStorage.setItem('@GitCollection:repositories', JSON.stringify(repos));
@@ -40,16 +41,28 @@ export const Dashboard: React.FC = () => {
       setInputError('Informe o username/repositorio');
       return;
     }
-    const response = await api.get<GithubRepository>(`repos/${newRepo}`);
-    const { data } = response;
-    setRepos([data, ...repos]);
-    setNewRepo('');
+    try {
+      const response = await api.get<GithubRepository>(`repos/${newRepo}`);
+      const { data } = response;
+      setRepos([data, ...repos]);
+      formElement.current?.reset();
+      setNewRepo('');
+      setInputError('');
+    } catch (error) {
+      setInputError(
+        `Não existe nenhum repositório que corresponda a "${newRepo}".`,
+      );
+    }
   };
   return (
     <>
       <Section>
         <Title>Catálogo de repositórios do GitHub</Title>
-        <Form onSubmit={handleAddRepo} hasError={Boolean(inputError)}>
+        <Form
+          ref={formElement}
+          onSubmit={handleAddRepo}
+          hasError={Boolean(inputError)}
+        >
           <input placeholder="username/repositorio" onChange={handleChange} />
           <button type="submit">Buscar</button>
         </Form>
@@ -58,8 +71,11 @@ export const Dashboard: React.FC = () => {
 
       {repos.length > 0 && (
         <Repos>
-          {repos.map(item => (
-            <Link to={`/repositories/${item.full_name}`} key={item.full_name}>
+          {repos.map((item, index) => (
+            <Link
+              to={`/repositories/${item.full_name}`}
+              key={item.full_name + index}
+            >
               <img src={item.owner.avatar_url} alt={item.owner.login} />
               <div>
                 <strong>{item.full_name}</strong>
