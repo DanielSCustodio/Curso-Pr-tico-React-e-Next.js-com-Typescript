@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title, Form, Section, Repos, Error } from './style';
 import { api } from '../../service/api';
-
+import { Link } from 'react-router-dom';
 interface GithubRepository {
   full_name: string;
   description: string;
@@ -59,14 +59,14 @@ export const Dashboard: React.FC = () => {
       {repos.length > 0 && (
         <Repos>
           {repos.map(item => (
-            <a href="/repositories" key={item.full_name}>
+            <Link to={`/repositories/${item.full_name}`} key={item.full_name}>
               <img src={item.owner.avatar_url} alt={item.owner.login} />
               <div>
                 <strong>{item.full_name}</strong>
                 <p>{item.description}</p>
               </div>
               <span>ᐳ</span>
-            </a>
+            </Link>
           ))}
         </Repos>
       )}

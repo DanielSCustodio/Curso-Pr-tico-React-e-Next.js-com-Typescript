@@ -1,13 +1,14 @@
 import React from 'react';
 import { Nav } from './style';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo-git-collection.svg';
 
 export const Header: React.FC = () => {
   return (
     <Nav>
-      <a href="/">
+      <Link to="/">
         <img src={logo} alt="Git Collection" />
-      </a>
+      </Link>
       <a
         href="https://github.com/DanielSCustodio"
         target="_blank"
