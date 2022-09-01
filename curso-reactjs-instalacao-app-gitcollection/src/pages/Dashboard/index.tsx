@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title, Form, Section, Repos, Error } from './style';
 import { api } from '../../service/api';
-
+import { Link } from 'react-router-dom';
 interface GithubRepository {
   full_name: string;
   description: string;
@@ -11,10 +11,22 @@ interface GithubRepository {
   };
 }
 
-export const Dashboard: React.FC = () => {
-  const [repos, setRepos] = React.useState<GithubRepository[]>([]);
+const Dashboard: React.FC = () => {
+  const [repos, setRepos] = React.useState<GithubRepository[]>(() => {
+    const storageRepos = localStorage.getItem('@GitCollection:repositories');
+    if (storageRepos) {
+      return JSON.parse(storageRepos);
+    }
+
+    return [];
+  });
   const [newRepo, setNewRepo] = React.useState('');
   const [inputError, setInputError] = React.useState('');
+  const formElement = React.useRef<HTMLFormElement | null>(null);
+
+  React.useEffect(() => {
+    localStorage.setItem('@GitCollection:repositories', JSON.stringify(repos));
+  }, [repos]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setNewRepo(event.target.value);
@@ -29,16 +41,28 @@ export const Dashboard: React.FC = () => {
       setInputError('Informe o username/repositorio');
       return;
     }
-    const response = await api.get<GithubRepository>(`repos/${newRepo}`);
-    const { data } = response;
-    setRepos([data, ...repos]);
-    setNewRepo('');
+    try {
+      const response = await api.get<GithubRepository>(`repos/${newRepo}`);
+      const { data } = response;
+      setRepos([data, ...repos]);
+      formElement.current?.reset();
+      setNewRepo('');
+      setInputError('');
+    } catch (error) {
+      setInputError(
+        `Não existe nenhum repositório que corresponda a "${newRepo}".`,
+      );
+    }
   };
   return (
     <>
       <Section>
         <Title>Catálogo de repositórios do GitHub</Title>
-        <Form onSubmit={handleAddRepo} hasError={Boolean(inputError)}>
+        <Form
+          ref={formElement}
+          onSubmit={handleAddRepo}
+          hasError={Boolean(inputError)}
+        >
           <input placeholder="username/repositorio" onChange={handleChange} />
           <button type="submit">Buscar</button>
         </Form>
@@ -47,18 +71,23 @@ export const Dashboard: React.FC = () => {
 
       {repos.length > 0 && (
         <Repos>
-          {repos.map(item => (
-            <a href="/repositories" key={item.full_name}>
+          {repos.map((item, index) => (
+            <Link
+              to={`/repositories/${item.full_name}`}
+              key={item.full_name + index}
+            >
               <img src={item.owner.avatar_url} alt={item.owner.login} />
               <div>
                 <strong>{item.full_name}</strong>
                 <p>{item.description}</p>
               </div>
               <span>ᐳ</span>
-            </a>
+            </Link>
           ))}
         </Repos>
       )}
     </>
   );
 };
+
+export default Dashboard;

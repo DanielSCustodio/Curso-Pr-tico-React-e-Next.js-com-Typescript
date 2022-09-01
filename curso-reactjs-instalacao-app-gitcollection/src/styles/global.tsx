@@ -14,8 +14,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   textarea:focus, input:focus, select:focus {
+    background-color: #0D1117;
     box-shadow: 0 0 0 0;
-    border: 0 none;
+    border-top-color: #5aa5fb;
+    border-bottom-color: #5aa5fb;
+    border-left-color: #5aa5fb;
     outline: 0;
   }
   

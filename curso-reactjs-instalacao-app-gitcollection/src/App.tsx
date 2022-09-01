@@ -7,8 +7,8 @@ import { GlobalStyle } from './styles/global';
 const App: React.FC = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes />
       </BrowserRouter>
       <GlobalStyle />
