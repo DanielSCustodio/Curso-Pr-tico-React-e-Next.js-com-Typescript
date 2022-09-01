@@ -13,7 +13,7 @@ export const Nav = styled.header`
   margin-bottom: 5rem;
 
   img {
-    width: 130px;
+    width: 200px;
     height: 50px;
   }
 `;

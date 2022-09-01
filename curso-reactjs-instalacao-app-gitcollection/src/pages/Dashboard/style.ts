@@ -1,5 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+interface FormProps {
+  hasError: boolean;
+}
 export const Title = styled.h1`
   font-size: 28px;
   color: #c9d1d9;
@@ -7,22 +10,30 @@ export const Title = styled.h1`
   line-height: 56px;
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   display: flex;
   margin-top: 2rem;
   max-width: 700px;
 
   input {
+    background-color: #010409;
     flex: 1;
-    height: 3rem;
+    font-size: 14px;
+    height: 2.5rem;
     padding: 0 24px;
-    border: 2px solid #fff;
+    border: 1px solid #30363d;
     border-radius: 5px 0 0 5px;
-    color: #0d1117;
+    color: #c9d1d9;
     border-right: 0;
 
+    ${props =>
+      props.hasError &&
+      css`
+        border-color: #5aa5fb;
+      `}
+
     &::placeholder {
-      color: #a8a8b3;
+      color: #3c424a;
     }
   }
 
@@ -52,16 +63,16 @@ export const Section = styled.section`
 `;
 
 export const Repos = styled.section`
-  background-color: #0d1117;
-  padding: 3rem;
-  border-radius: 6px;
-  border: 1px solid #30363d;
-  margin-top: 5rem;
-  width: 70%;
   margin: 0 auto;
   margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-width: 70%;
 
   a {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    padding: 3rem;
+    border-radius: 6px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -99,7 +110,15 @@ export const Repos = styled.section`
 
     span {
       color: white;
-      font-size: 20px;
+      font-size: 1rem;
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 1rem;
+  color: #c9d1d9;
 `;
