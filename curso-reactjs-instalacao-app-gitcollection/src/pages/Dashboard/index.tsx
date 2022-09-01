@@ -1,10 +1,9 @@
 import React from 'react';
 import { Title, Form, Section, Repos } from './style';
-import logo from '../../assets/logo-git-collection.svg';
+
 export const Dashboard: React.FC = () => {
   return (
     <>
-      <img src={logo} alt="Git Collection" />
       <Section>
         <Title>Catálogo de repositórios do Github</Title>
         <Form>
@@ -14,11 +13,15 @@ export const Dashboard: React.FC = () => {
       </Section>
       <Repos>
         <a href="/repositories">
-          <img src="" alt="repositórios" />
+          <img
+            src="https://avatars.githubusercontent.com/u/29557187?v=4"
+            alt="repositório"
+          />
           <div>
             <strong>DanielSCustodio/Course-Trybe</strong>
             <p>Exercícios feitos durante o material de explicação do course</p>
           </div>
+          <span>ᐳ</span>
         </a>
       </Repos>
     </>

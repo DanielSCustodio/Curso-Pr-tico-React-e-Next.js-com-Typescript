@@ -47,6 +47,8 @@ export const Section = styled.section`
   border-radius: 6px;
   border: 1px solid #30363d;
   margin-top: 5rem;
+  width: 70%;
+  margin: 0 auto;
 `;
 
 export const Repos = styled.section`
@@ -55,4 +57,49 @@ export const Repos = styled.section`
   border-radius: 6px;
   border: 1px solid #30363d;
   margin-top: 5rem;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: translateX(6px);
+    }
+
+    & + a {
+      margin-top: 1rem;
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+
+    div {
+      margin: 0 1rem;
+      flex: 1;
+
+      strong {
+        font-size: 20px;
+        color: #c9d1d9;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #a8a8b3;
+        margin-top: 4px;
+      }
+    }
+
+    span {
+      color: white;
+      font-size: 20px;
+    }
+  }
 `;

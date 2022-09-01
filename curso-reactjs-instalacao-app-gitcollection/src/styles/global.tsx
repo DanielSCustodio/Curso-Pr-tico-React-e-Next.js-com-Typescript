@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import background from '../assets/background.svg';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -14,10 +13,15 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+  }
+  
   #root {
-    max-width: 70%;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0.5rem 0.25rem;
   }
 
   button {
