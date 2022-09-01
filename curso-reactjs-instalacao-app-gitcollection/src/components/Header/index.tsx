@@ -5,8 +5,16 @@ import logo from '../../assets/logo-git-collection.svg';
 export const Header: React.FC = () => {
   return (
     <Nav>
-      <img src={logo} alt="Git Collection" />
-      <span>Desenvolvido por Daniel Custódio</span>
+      <a href="/">
+        <img src={logo} alt="Git Collection" />
+      </a>
+      <a
+        href="https://github.com/DanielSCustodio"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span>Desenvolvido por Daniel Custódio</span>
+      </a>
     </Nav>
   );
 };

@@ -9,11 +9,11 @@ export const Nav = styled.header`
   justify-content: space-between;
   width: 100%;
   margin: 0;
-  padding: 0.4rem 1.9rem;
+  padding: 0.3rem 1.9rem;
   margin-bottom: 5rem;
 
   img {
-    width: 200px;
+    width: 180px;
     height: 50px;
   }
 `;
