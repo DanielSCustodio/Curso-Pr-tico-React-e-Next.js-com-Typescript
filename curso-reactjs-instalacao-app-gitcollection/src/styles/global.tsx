@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   #root {
     max-width: 100%;
     margin: 0 auto;
+
   }
 
   button {
@@ -36,13 +37,17 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+
+
   html {
     @media (max-width: 1080px){
       font-size: 93.75%;
+      
     }
 
     @media (max-width: 720px){
-      font-size: 87.5%;
+      font-size: 100%;
+      overflow-x:hidden;
     }
   }
 `;

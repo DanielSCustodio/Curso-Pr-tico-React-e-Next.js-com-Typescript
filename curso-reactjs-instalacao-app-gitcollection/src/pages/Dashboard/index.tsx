@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
     event.preventDefault();
 
     if (!newRepo) {
-      setInputError('Informe o username/repositorio');
+      setInputError('Informe o username/repositório');
       return;
     }
     try {
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
           onSubmit={handleAddRepo}
           hasError={Boolean(inputError)}
         >
-          <input placeholder="username/repositorio" onChange={handleChange} />
+          <input placeholder="username/repositório" onChange={handleChange} />
           <button type="submit">Buscar</button>
         </Form>
         {inputError && <Error>{inputError}</Error>}
