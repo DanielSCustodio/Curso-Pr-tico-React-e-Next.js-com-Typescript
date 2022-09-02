@@ -7,9 +7,19 @@ export const Header = styled.header`
   align-items: center;
   width: 70%;
 
+  @media (max-width: 720px) {
+    margin-top: 2rem;
+    width: 90%;
+    overflow-x: hidden;
+  }
+
   h1 {
     color: #c9d1d9;
     text-transform: uppercase;
+
+    @media (max-width: 720px) {
+      font-size: 1.5rem;
+    }
   }
   button {
     background: #21262d;
@@ -35,24 +45,42 @@ export const RepoInfo = styled.section`
   margin: 0 auto;
   margin-top: 5rem;
 
+  @media (max-width: 720px) {
+    width: 90%;
+    overflow-x: hidden;
+  }
+
   header {
     display: flex;
     align-items: center;
+    @media (max-width: 720px) {
+      justify-content: space-around;
+    }
 
     img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
+      @media (max-width: 720px) {
+        width: 60px;
+        height: 60px;
+      }
     }
 
     div {
       margin-left: 1.5rem;
       strong {
         font-size: 20px;
+        @media (max-width: 720px) {
+          font-size: 1rem;
+        }
       }
       p {
         font-size: 1rem;
         color: #a8a8b3;
+        @media (max-width: 720px) {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -61,15 +89,24 @@ export const RepoInfo = styled.section`
     display: flex;
     list-style: none;
     margin-top: 2.5rem;
+    @media (max-width: 720px) {
+      justify-content: space-around;
+    }
   }
 
   li {
     & + li {
       margin-left: 5rem;
+      @media (max-width: 720px) {
+        margin-left: 2rem;
+      }
     }
     strong {
       display: block;
       font-size: 2rem;
+      @media (max-width: 720px) {
+        font-size: 1.5rem;
+      }
     }
 
     span {
@@ -86,6 +123,11 @@ export const Issues = styled.section`
   margin-bottom: 2rem;
   max-width: 70%;
   color: #c9d1d9;
+
+  @media (max-width: 720px) {
+    max-width: 90%;
+    overflow-x: hidden;
+  }
   h2 {
     margin: 2rem 0;
     text-transform: uppercase;
@@ -99,6 +141,10 @@ export const Issues = styled.section`
     display: flex;
     align-items: center;
     transition: transform 0.5s;
+    @media (max-width: 720px) {
+      padding: 1rem;
+      transition: none;
+    }
 
     &:hover {
       transform: translateX(6px);
