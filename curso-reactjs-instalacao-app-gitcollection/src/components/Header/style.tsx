@@ -12,8 +12,21 @@ export const Nav = styled.header`
   padding: 0.3rem 1.9rem;
   margin-bottom: 5rem;
 
+  @media (max-width: 720px) {
+    padding: 0 1rem;
+    font-size: 12px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 1rem;
+  }
+
   img {
     width: 180px;
     height: 50px;
+
+    @media (max-width: 720px) {
+      width: 120px;
+      height: 50px;
+    }
   }
 `;
