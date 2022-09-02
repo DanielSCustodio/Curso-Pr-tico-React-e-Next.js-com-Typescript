@@ -6,8 +6,8 @@ Através da  [api](https://api.github.com) do GitHub esta aplicação faz a busc
 
 Os repositórios encontrados são pilhados na página inicial e salvos no localStorage. O usuário poderá ver os detalhes dos repositórios ao clicar em algum deles, sendo assim redirecionado para a página de detalhes do repositório, que é criada de forma dinâmica pela aplicação.<br>
 
-A estilização da aplicação tem a intenção de seguir a identidade visual do site oficial do GitHub.
-
+A estilização da aplicação tem a intenção de seguir a identidade visual do site oficial do GitHub.<br><br>
+Confira a aplicação em produção: https://appgitcollection.netlify.app/
 ## Tecnologias usadas
 
 Front-end:
