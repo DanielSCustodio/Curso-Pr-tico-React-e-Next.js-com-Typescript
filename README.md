@@ -2,7 +2,7 @@
 # Git Collection
 ![2022-09-01_19-48](https://user-images.githubusercontent.com/29557187/188027402-018a54da-7a12-429c-91a6-443a6c2a9025.png)
 
-Através da  [api](https://api.github.com) do GitHub esta aplicação faz a busca de repositórios utilizando a sintaxe``username/repositório``<br>
+Através da  [api](https://api.github.com) do GitHub esta aplicação faz a busca de repositórios utilizando a sintaxe``username/repositório``.<br>
 
 Os repositórios encontrados são pilhados na página inicial e salvos no localStorage. O usuário poderá ver os detalhes dos repositórios ao clicar em algum deles, sendo assim redirecionado para a página de detalhes do repositório, que é criada de forma dinâmica pela aplicação.<br>
 
